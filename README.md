@@ -2,7 +2,7 @@
 
 ## Start project
 
-Install deps (typescript related)
+Установить зависимости (относящиеся только к typescript)
 
 ```
 npm ci
@@ -17,8 +17,8 @@ npm start PORT
 ## Notes
 
 *Recipients should receive messages in the same order as the request came from them*
-And [consumer callbacks list](./src/queue.ts#L6) was added in order to achieve that. 
 
-* Once a message received, we try to check if there are any pending consumers and [send](./src/queue.ts#L18) that message. 
-* Once a client wants to get a message, we add the client to the consumers list and try to [send](./src/queue.ts#L32)
-a message if there is any.
+Чтобы достигнуть этого, был реализован [consumer callbacks list](./src/queue.ts#L6). 
+
+* При получении сообщения, проверям есть ли ожидающие потребители и [отправляем](./src/queue.ts#L18) сообщение. 
+* Когда клиент хочет получить сообщение, клиент добавляется в consumers list и если в очереди уже есть сообщение - [отправляем](./src/queue.ts#L32) его.
